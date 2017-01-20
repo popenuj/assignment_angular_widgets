@@ -1,7 +1,7 @@
 
 // Unique filter
 
-widgets.filter('unique', ['_', function(_) {
+widgets.filter('uniq', [function() {
 
   return function(collection, key) {
     return _.uniqBy(collection, key);

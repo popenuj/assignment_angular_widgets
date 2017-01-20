@@ -11,16 +11,18 @@
   <div ng-controller="PhotosCtrl">
     <div class="container">
 
-      <div class="search">
-        <label>Search By Filter:</label>
-        <select ng-model="selectedFilter" ng-options="photoFilter as data.photoFilter for data in photoData | unique:'photoFilter'">
-        </select>
+      <div class="row">
+        <form class="search form-group">
+          <label>Search By Filter:</label>
+          <select ng-model="selectedFilter" ng-options="data.photoFilter for data in photoData | uniq:'photoFilter'" class="form-control">
+          </select>
+        </form>
       </div>
 
       <div class="row">
-        <div ng-repeat="data in photoData" class="thumbnail col-xs-6 col-sm-4 col-md-3">
+        <div ng-repeat="data in photoData | filter:selectedFilter" class="thumbnail col-xs-6 col-sm-4 col-md-3">
           <a ng-href="{{ data.userUrl }}">
-            <h5 class="pull-left">{{data.username}}</h5>
+            <h5 class="pull-left">{{ data.username }}</h5>
           </a>
           <h5 class="pull-right">{{data.time | date:'MM/dd/yyyy'}}</h5>
           <a ng-href="{{ data.instagramUrl }}">
@@ -40,7 +42,7 @@
 <script src="js/helpers/photos.js"></script>
 <script src="js/helpers/insta_parser.js"></script>
 <script src="js/app.js"></script>
+<script src="js/filters/uniq.js"></script>
 <script src="js/controllers/photos.js"></script>
-<script src="js/filters/unique.js"></script>
 
 </html>
