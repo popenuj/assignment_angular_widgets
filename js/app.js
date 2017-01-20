@@ -8,6 +8,8 @@ var widgets = angular.module('widgets', []);
 widgets.controller('RestaurantCtrl', ['$scope',
   function($scope) {
     $scope.restaurants = [];
+    $scope.sortColumn;
+    $scope.reverseOrder = false;
 
     $scope.processForm = function(form) {
       var restaurantData = {};
@@ -25,5 +27,18 @@ widgets.controller('RestaurantCtrl', ['$scope',
         }
       }
     }
+
+    $scope.filterTable = function() {
+      $scope.sortColumn = event.target.getAttribute("value");
+      if ($scope.sortColumn === event.target.getAttribute("value")) {
+        $scope.reverseOrder = !$scope.reverseOrder;
+      }
+    }
+  }
+]);
+
+widgets.controller('PhotosCtrl', ['$scope', '$window',
+  function($scope, $window) {
+    $scope.photoData = $window.instaParser($window.instagramResponse);
   }
 ]);

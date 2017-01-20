@@ -7,20 +7,22 @@
 
 <body>
   <div ng-controller="RestaurantCtrl">
+    <h2>Add Restaurant</h2>
     <form>
       <input type="text" name="name" ng-model="restaurantForm.name"><br>
       <input type="text" name="foodType" ng-model="restaurantForm.foodType"><br>
       <input type="text" name="imageUrl" ng-model="restaurantForm.imageUrl"><br>
       <input type="submit" value="Create Restaurant" ng-click="processForm(restaurantForm)">
     </form>
+    <h2>Restaurants:</h2>
     <table>
       <tr>
-        <th>Name</th>
-        <th>Type of Food</th>
+        <th value="name" ng-click="filterTable()">Name</th>
+        <th value="foodType" ng-click="filterTable()">Type of Food</th>
         <th>Image</th>
         <th>Delete</th>
       </tr>
-      <tr ng-repeat="restaurant in restaurants | orderBy:'foodType'">
+      <tr ng-repeat="restaurant in restaurants | orderBy: sortColumn: reverseOrder | filter: query">
         <td>{{ restaurant.name }}</td>
         <td>{{ restaurant.foodType }}</td>
         <td>
@@ -32,6 +34,8 @@
         <!--TODO: ng-cloak?-->
       </tr>
     </table>
+    <h2>Search Restaurants:</h2>
+    <input type="text" ng-model="query">
   </div>
 </body>
 
