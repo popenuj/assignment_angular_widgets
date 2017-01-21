@@ -104,7 +104,7 @@ var instagramResponse = {
           }
         ]
       },
-      "filter": "Normal",
+      "filter": "Inkwell",
       "created_time": "1440696547",
       "link": "https://instagram.com/p/65S1D8AJKt/",
       "likes": {

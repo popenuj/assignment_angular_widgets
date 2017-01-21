@@ -24,4 +24,14 @@ var getDate = function(epoch) {
   var date = new Date(0);
   date.setUTCSeconds(utcSeconds);
   return date;
+};
+
+var getTags = function(photoData) {
+  var tags = [];
+  photoData.forEach(function(dataSet) {
+    dataSet.tags.forEach(function(tag) {
+      tags.push(tag);
+    })
+  })
+  return tags;
 }
